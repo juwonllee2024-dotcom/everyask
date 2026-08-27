@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "EveryAsk — Did AI answer everything?",
+  "version": "0.1.0",
+  "description": "See which parts of your AI request were answered. Local-only, model-agnostic, no auto-send.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Check whether AI answered everything"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ]
+}

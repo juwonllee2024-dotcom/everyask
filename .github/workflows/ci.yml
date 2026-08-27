@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
+      - name: Lint privacy boundary
+        run: npm run lint
+      - name: Check contracts
+        run: npm run typecheck
+      - name: Build extension
+        run: npm run build
+      - name: Run package smoke test
+        run: npm run smoke
+      - name: Audit dependencies
+        run: npm run audit

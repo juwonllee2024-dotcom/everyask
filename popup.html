@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EveryAsk</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div class="eyebrow"><span class="signal-dot"></span> STRUCTURAL COVERAGE</div>
+        <h1>Every<span>Ask</span></h1>
+        <p class="tagline">Did AI answer everything?</p>
+        <p class="hero-copy">You asked for five things. EveryAsk shows which ones made it through.</p>
+      </header>
+
+      <section class="control-card" aria-labelledby="check-title">
+        <div class="control-heading">
+          <div>
+            <p class="section-kicker">ONE CLICK CHECK</p>
+            <h2 id="check-title">Inspect the current AI tab</h2>
+          </div>
+          <span class="lock-mark" aria-label="Local only">LOCAL</span>
+        </div>
+        <label class="field-label" for="provider">Conversation source</label>
+        <select id="provider" class="provider-select">
+          <option value="auto">Auto · ChatGPT / Claude</option>
+          <option value="chatgpt">ChatGPT</option>
+          <option value="claude">Claude</option>
+          <option value="generic">Generic supported markup</option>
+        </select>
+        <button id="check-button" class="primary-button" type="button">
+          <span>Check this answer</span><span class="button-arrow" aria-hidden="true">↗</span>
+        </button>
+        <p class="microcopy">Reads only the latest visible user request and AI answer after you click.</p>
+      </section>
+
+      <p id="status" class="status-line" role="status" aria-live="polite">Ready when you are.</p>
+
+      <section id="empty-state" class="empty-state" aria-label="How to use EveryAsk">
+        <div class="empty-icon">?</div>
+        <p class="empty-title">The missing-answer detector</p>
+        <p>Use a numbered, bulleted, or multi-question request for the clearest check.</p>
+      </section>
+
+      <section id="result-panel" class="result-panel" aria-live="polite" hidden>
+        <div class="summary-card">
+          <div id="answer-count" class="answer-count">0/0</div>
+          <div>
+            <p class="section-kicker">ANSWER COVERAGE</p>
+            <h2 id="summary-title">No result yet</h2>
+            <p id="summary-text" class="summary-text"></p>
+          </div>
+        </div>
+
+        <details class="source-details">
+          <summary>What EveryAsk inspected</summary>
+          <div class="source-grid">
+            <div><span>REQUEST</span><p id="request-preview"></p></div>
+            <div><span>ANSWER</span><p id="answer-preview"></p></div>
+          </div>
+        </details>
+
+        <div id="results" class="results-list"></div>
+
+        <div id="follow-up" class="follow-up-card" hidden>
+          <div>
+            <p class="section-kicker">REPAIR THE THREAD</p>
+            <h2>Ask only for what is missing.</h2>
+            <p>Copy a focused follow-up. EveryAsk never sends it for you.</p>
+          </div>
+          <button id="copy-button" class="secondary-button" type="button">Copy follow-up <span>↗</span></button>
+          <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <footer class="footer-note">
+        <span>Local-only · no network · no model</span>
+        <span>Coverage ≠ truth</span>
+      </footer>
+    </main>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

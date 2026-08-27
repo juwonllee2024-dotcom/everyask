@@ -1,0 +1,11 @@
+{
+  "request": "1. Write the README\n2. Add unit tests\n3. Publish a release",
+  "answer": "README written. Unit tests added.",
+  "expected": {
+    "complete": 2,
+    "partial": 0,
+    "missing": 1,
+    "unclear": 0,
+    "follow_up_contains": "Publish a release"
+  }
+}
